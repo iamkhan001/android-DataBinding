@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:bind="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.nstudio.databinding.UserModel"/>
+
+        <variable
+            name="handlers"
+            type="com.nstudio.databinding.MyClickListener"/>
+
+        <variable
+            name="watcher"
+            type="com.nstudio.databinding.MainActivity.MyTextWatcher"/>
+
+    </data>
+
+
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+
+
+        <!--
+         To pass the variables to included content_main layout,
+         example: bind:user=”@{user}” is used. Without this,
+         the user object won’t be accessible in content_main layout.
+        -->
+
+        <include
+            android:id="@+id/content"
+            layout="@layout/content_main"
+            bind:watcher="@{watcher}"
+            bind:user="@{user}"
+            bind:handlers="@{handlers}"/>
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_gravity="bottom|end"
+            android:layout_margin="5dp"
+            android:src="@android:drawable/arrow_up_float"
+            android:onClick="@{handlers::onFabClicked}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>
